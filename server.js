@@ -8,6 +8,9 @@ const PORT_SOAP = process.env.PORT_SOAP || 4000;
 async function main() {
     try {
         await startSoapServer(PORT_SOAP);
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         startRestServer(PORT_REST);
     } catch (error) {
         console.error("Error al iniciar los servidores:", error);

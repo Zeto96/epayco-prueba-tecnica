@@ -16,7 +16,7 @@ const walletService = {
         return {
             success: true,
             message_success: "Recarga de saldo exitosa",
-            cod_success: 200,
+            cod_error: 0o0,
             data: {
                 document_id,
                 phone,
@@ -40,7 +40,7 @@ const walletService = {
         return {
             success: true,
             message_success: "Saldo consultado correctamente",
-            cod_success: 200,
+            cod_error: 0o0,
             data: {
                 document_id,
                 phone

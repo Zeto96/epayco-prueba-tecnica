@@ -3,7 +3,7 @@ const rateLimit = require("express-rate-limit");
 const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const cors = require("cors");   
+const cors = require("cors");
 
 /* Rutas */
 const customersRoutes = require("./routes/customers/customers.routes");

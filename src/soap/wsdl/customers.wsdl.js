@@ -38,11 +38,11 @@ const customersBinding = `
 const customersTypes = `
     <complexType name="CustomerDataType">
         <sequence>
-            <element name="names" type="xsd:string"/>
-            <element name="last_names" type="xsd:string"/>
-            <element name="email" type="xsd:string"/>
-            <element name="document_id" type="xsd:string"/>
-            <element name="phone" type="xsd:string"/>
+            <element name="names"/>
+            <element name="last_names"/>
+            <element name="email"/>
+            <element name="document_id"/>
+            <element name="phone"/>
         </sequence>
     </complexType>
 `;
