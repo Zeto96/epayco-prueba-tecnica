@@ -5,5 +5,14 @@ require("dotenv").config();
 const PORT_REST = process.env.PORT_REST || 3000;
 const PORT_SOAP = process.env.PORT_SOAP || 4000;
 
-startRestServer(PORT_REST);
-startSoapServer(PORT_SOAP);
+async function main() {
+    try {
+        await startSoapServer(PORT_SOAP);
+        startRestServer(PORT_REST);
+    } catch (error) {
+        console.error("Error al iniciar los servidores:", error);
+        process.exit(1);
+    }
+};
+
+main();
