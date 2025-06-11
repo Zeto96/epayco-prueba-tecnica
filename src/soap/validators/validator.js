@@ -67,8 +67,8 @@ function validateWalletRechargeData(data) {
         const amount = parseFloat(data.amount);
         if (isNaN(amount)) {
             errors.push("El monto debe ser un valor numérico");
-        } else if (amount < 1000) {
-            errors.push("El monto mínimo de recarga es de 1000");
+        } else if (amount < 5) {
+            errors.push("El monto mínimo de recarga es de 5");
         } else if (amount > 1000000) {
             errors.push("El monto máximo de recarga es de 1,000,000");
         }
