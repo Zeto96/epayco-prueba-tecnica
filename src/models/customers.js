@@ -35,10 +35,6 @@ const customerSchema = new mongoose.Schema({
     }
 });
 
-customerSchema.index({ document_id: 1 });
-customerSchema.index({ email: 1 });
-customerSchema.index({ phone: 1 });
-
 const Customer = mongoose.model("Customer", customerSchema);
 
 module.exports = { Customer };

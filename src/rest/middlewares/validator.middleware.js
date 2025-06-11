@@ -82,4 +82,44 @@ const validateWalletBalance = [
         .matches(/^\+?[0-9]{8,15}$/).withMessage('Formato de teléfono inválido')
 ];
 
-module.exports = { validateResult, validateCreateCustomer, validateWalletRecharge, validateWalletBalance };
+const validateWalletPayment = [
+    body('document_id')
+        .trim()
+        .notEmpty().withMessage("El numero documento es requerido")
+        .isNumeric().withMessage("El numero documento debe ser un valor numérico")
+        .escape(),
+
+    body('phone')
+        .trim()
+        .notEmpty().withMessage("El numero de teléfono es requerido")
+        .matches(/^\+?[0-9]{8,15}$/).withMessage('Formato de teléfono inválido'),
+
+    body('amount')
+        .trim()
+        .notEmpty().withMessage("El monto es requerido")
+        .isNumeric().withMessage("El monto debe ser un valor numérico")
+        .isFloat({ gt: 0 }).withMessage("El monto debe ser mayor a 0")
+];
+
+const validatePaymentConfirmation = [
+    body('session_id')
+        .trim()
+        .notEmpty().withMessage("El ID de sesión es requerido")
+        .isLength({ min: 32, max: 32 }).withMessage("El ID de sesión debe tener 32 caracteres")
+        .matches(/^[0-9a-f]{32}$/).withMessage("Formato de ID de sesión inválido"),
+
+    body('token')
+        .trim()
+        .notEmpty().withMessage("El token es requerido")
+        .isLength({ min: 6, max: 6 }).withMessage("El token debe tener 6 dígitos")
+        .isNumeric().withMessage("El token debe ser un número"),
+];
+
+module.exports = {
+    validateResult,
+    validateCreateCustomer,
+    validateWalletRecharge,
+    validateWalletBalance,
+    validateWalletPayment,
+    validatePaymentConfirmation
+};

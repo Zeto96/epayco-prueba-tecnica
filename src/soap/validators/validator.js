@@ -104,8 +104,72 @@ function validateWalletBalanceData(data) {
     };
 };
 
+function validateWalletPaymentData(data) {
+    const errors = [];
+
+        if (!data.document_id) {
+            errors.push("El documento es requerido");
+        } else if (data.document_id.length < 5 || data.document_id.length > 20) {
+            errors.push("El documento debe tener entre 5 y 20 caracteres");
+        }
+    
+        if (!data.phone) {
+            errors.push("El teléfono es requerido");
+        } else {
+            const phoneRegex = /^\+?[0-9]{8,15}$/;
+            if (!phoneRegex.test(data.phone)) {
+                errors.push("El formato de teléfono es inválido");
+            }
+        }
+    
+        if (!data.amount) {
+            errors.push("El monto es requerido");
+        } else {
+            const amount = parseFloat(data.amount);
+            if (isNaN(amount)) {
+                errors.push("El monto debe ser un valor numérico");
+            } else if (amount <= 0) {
+                errors.push("El monto debe ser mayor a 0");
+            } else if (amount > 1000000) {
+                errors.push("El monto máximo de pago es de 1,000,000");
+            }
+        }
+    
+        return {
+            isValid: errors.length === 0,
+            errors
+        };
+};
+
+function validatePaymentConfirmationData(data) {
+    const errors = [];
+
+    if (!data.session_id) {
+        errors.push("El ID de sesión es requerido");
+    } else if (data.session_id.length !== 32) {
+        errors.push("El ID de sesión debe tener 32 caracteres");
+    } else if (!/^[0-9a-f]{32}$/.test(data.session_id)) {
+        errors.push("Formato de ID de sesión inválido");
+    }
+
+    if (!data.token) {
+        errors.push("El token es requerido");
+    } else if (data.token.length !== 6) {
+        errors.push("El token debe tener 6 dígitos");
+    } else if (!/^\d{6}$/.test(data.token)) {
+        errors.push("El token debe contener solo números");
+    }
+
+    return {
+        isValid: errors.length === 0,
+        errors
+    };
+};
+
 module.exports = {
     validateCustomerData,
     validateWalletRechargeData,
-    validateWalletBalanceData
+    validateWalletBalanceData,
+    validateWalletPaymentData,
+    validatePaymentConfirmationData
 };
