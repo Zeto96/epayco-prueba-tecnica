@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "4b2af47a-eb26-422b-a08b-bf0dc159bf98",
+		"name": "EpayCo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14552045"
+	},
+	"item": [
+		{
+			"name": "create_customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"names\": \"\",\r\n    \"last_names\": \"\",\r\n    \"email\": \"\",\r\n    \"document_id\": 0,\r\n    \"phone\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/customers/create_customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"customers",
+						"create_customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wallet_balance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_id\": 0,\r\n    \"phone\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/wallet/wallet_balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"wallet",
+						"wallet_balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wallet_recharge",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_id\": 0,\r\n    \"phone\": \"\",\r\n    \"amount\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/wallet/wallet_recharge",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"wallet",
+						"wallet_recharge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wallet_payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_id\": 0,\r\n    \"phone\": \"\",\r\n    \"amount\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/wallet/wallet_payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"wallet",
+						"wallet_payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm_payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"\",\r\n    \"token\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/wallet/confirm_payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"wallet",
+						"confirm_payment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
