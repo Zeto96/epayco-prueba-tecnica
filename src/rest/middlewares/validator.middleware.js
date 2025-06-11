@@ -55,7 +55,7 @@ const validateWalletRecharge = [
         .notEmpty().withMessage("El numero documento es requerido")
         .isLength({ min: 5, max: 20 }).withMessage("El numero documento debe tener al menos 5 caracteres y máximo 20 caracteres")
         .escape(),
-    
+
     body('phone')
         .trim()
         .notEmpty().withMessage("El numero de teléfono es requerido")

@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");   
 
 /* Rutas */
-const usersRoutes = require("./routes/users/users.routes");
+const customersRoutes = require("./routes/customers/customers.routes");
 const walletRoutes = require("./routes/wallet/wallet.routes");
 const pkg = require("../../package.json");
 
@@ -46,7 +46,7 @@ function startRestServer(port) {
     });
 
     /* Rutas */
-    app.use("/api/customers", usersRoutes);
+    app.use("/api/customers", customersRoutes);
     app.use("/api/wallet", walletRoutes);
 
     /* Ruta no encontrada */
