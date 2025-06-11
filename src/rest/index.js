@@ -7,8 +7,7 @@ const cors = require("cors");
 
 /* Rutas */
 const usersRoutes = require("./routes/users/users.routes");
-
-/* Paquete */
+const walletRoutes = require("./routes/wallet/wallet.routes");
 const pkg = require("../../package.json");
 
 function startRestServer(port) {
@@ -48,6 +47,7 @@ function startRestServer(port) {
 
     /* Rutas */
     app.use("/api/customers", usersRoutes);
+    app.use("/api/wallet", walletRoutes);
 
     /* Ruta no encontrada */
     app.use((req, res, next) => {

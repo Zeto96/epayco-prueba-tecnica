@@ -49,4 +49,37 @@ const validateCreateCustomer = [
         .matches(/^\+?[0-9]{8,15}$/).withMessage('Formato de teléfono inválido')
 ];
 
-module.exports = { validateResult, validateCreateCustomer };
+const validateWalletRecharge = [
+    body('document_id')
+        .trim()
+        .notEmpty().withMessage("El numero documento es requerido")
+        .isLength({ min: 5, max: 20 }).withMessage("El numero documento debe tener al menos 5 caracteres y máximo 20 caracteres")
+        .escape(),
+    
+    body('phone')
+        .trim()
+        .notEmpty().withMessage("El numero de teléfono es requerido")
+        .matches(/^\+?[0-9]{8,15}$/).withMessage('Formato de teléfono inválido'),
+
+    body('amount')
+        .trim()
+        .notEmpty().withMessage("El monto es requerido")
+        .isNumeric().withMessage("El monto debe ser un valor numérico")
+        .isFloat({ min: 5 }).withMessage("El monto debe ser mayor a 5")
+        .isFloat({ max: 1000000 }).withMessage("El monto debe ser menor a 1000000"),
+];
+
+const validateWalletBalance = [
+    body('document_id')
+        .trim()
+        .notEmpty().withMessage("El numero documento es requerido")
+        .isLength({ min: 5, max: 20 }).withMessage("El numero documento debe tener al menos 5 caracteres y máximo 20 caracteres")
+        .escape(),
+
+    body('phone')
+        .trim()
+        .notEmpty().withMessage("El numero de teléfono es requerido")
+        .matches(/^\+?[0-9]{8,15}$/).withMessage('Formato de teléfono inválido')
+];
+
+module.exports = { validateResult, validateCreateCustomer, validateWalletRecharge, validateWalletBalance };
