@@ -15,15 +15,15 @@ const create_customer = async (req, res) => {
         if (result.success) {
             return res.status(201).json({
                 success: true,
-                message_success: result.message_success || "Cliente creado correctamente",
-                cod_error: result.cod_error || 0o0,
+                message_success: result.message_success,
+                cod_error: result.cod_error || 0o00,
                 data: result.data
             });
         } else {
             return res.status(400).json({
                 success: false,
-                message_error: result.message_error || "Error al crear el cliente",
-                cod_error: result.cod_error || 400
+                message_error: result.message_error,
+                cod_error: result.cod_error
             });
         }
 
